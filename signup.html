@@ -1,0 +1,74 @@
+<!DOCTYPE HTML> <html>
+ <head> 
+ <title>Sign-Up</title> </head>
+ <script type="text/javascript">
+
+  function checkForm(form)
+  {
+     if(form.pass.value != "" && form.pass.value == form.cpass.value) {
+      if(form.pass.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pass.focus();
+        return false;
+      }
+      if(form.pass.value == form.user.value) {
+        alert("Error: Password must be different from Username!");
+        form.pass.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pass.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pass.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pass.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pass.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.pass.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pass.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Password does not match!");
+      form.pass.focus();
+      return false;
+    }
+
+    //alert("You entered a valid password: " + form.pass.value);
+    return true;
+  }
+
+</script>
+  <body id="body-color"> 
+     <div id="Sign-Up"> <fieldset style="width:30%"><legend>Registration Form</legend>
+      <table border="0"> 
+         <tr> 
+         <form method="POST" action="signup.php" onSubmit="return checkForm(this);"> 
+             <td>Name</td><td> <input type="text" name="name"></td> </tr>
+
+        <tr>
+
+               <td>UserName/Email:</td>
+                 <td> <input type="text" name="user" required></td> </tr> 
+         <tr>
+                 <td>Password</td>
+                   <td> <input type="password" name="pass" required></td> </tr>
+
+         <tr> 
+                 <td>Confirm Password </td>
+                 <td><input type="password" name="cpass" required></td> </tr> 
+         <tr> <td><input id="button" type="submit" name="submit" value="Sign-Up"></td> </tr>
+          </form> 
+        </table> </fieldset> 
+
+       </div>
+     </body> 
+
+     </html>
+
